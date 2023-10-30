@@ -1,8 +1,8 @@
 
 package br.com.fesa.projetos.analisadorsintatico;
 
-public class AnalisadorSintatico {
 
+public class Main {
     public static void main(String[] args) {
         Analisador analisadorSintatico = new Analisador();
         
