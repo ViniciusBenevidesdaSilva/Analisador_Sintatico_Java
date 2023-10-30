@@ -3,10 +3,13 @@ package br.com.fesa.projetos.analisadorsintatico;
 
 
 public class Main {
+    
+    private static Analisador analisadorSintatico;
+    
     public static void main(String[] args) {
-        Analisador analisadorSintatico = new Analisador();
+        analisadorSintatico = new Analisador();
         
-        if(analisadorSintatico.realizaAnalise("f")){
+        if(analisadorSintatico.realizaAnalise("daba")){
             System.out.println("Válido");
         }
         else{

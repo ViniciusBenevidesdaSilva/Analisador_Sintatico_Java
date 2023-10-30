@@ -22,27 +22,30 @@ public class Analisador {
     };
     
     public Analisador(){
-        insereTerminaisEVariaveis();
+        iniciaGramatica();
     }
     
-    private void insereTerminaisEVariaveis(){
+    private void iniciaGramatica(){
+        
+        terminais.clear();
         terminais.add('a');
         terminais.add('b');
         terminais.add('c');
         terminais.add('d');
         terminais.add('f');
         
+        variaveis.clear();
         variaveis.add('S');
         variaveis.add('T');
         variaveis.add('R');
     }
     
     public boolean realizaAnalise(String input){
-        iniciaAnalisador(input);
+        iniciaNovaAnalise(input);
         return validaInput();
     }
     
-    private void iniciaAnalisador(String input) {
+    private void iniciaNovaAnalise(String input) {
         pilha.clear();
         pilha.push('S');
 
@@ -57,11 +60,11 @@ public class Analisador {
         while (!pilha.isEmpty()) {
             simboloAtual = pilha.pop();
             
-            if(validaSeTerminal(simboloAtual)){
+            if(validaTerminal(simboloAtual)){
                 continue;
             }
             
-            if(validaSeVariavel(simboloAtual)){
+            if(validaVariavel(simboloAtual)){
                 continue;
             }
             
@@ -71,7 +74,7 @@ public class Analisador {
         return indiceAtual == input.length();
     }
      
-    private boolean validaSeTerminal(char simboloAtual){
+    private boolean validaTerminal(char simboloAtual){
        
         if(!validaSeContem(simboloAtual, terminais)){
             return false;   
@@ -85,7 +88,7 @@ public class Analisador {
         return true;
     }
     
-    private boolean validaSeVariavel(char simboloAtual){
+    private boolean validaVariavel(char simboloAtual){
         
         if(!validaSeContem(simboloAtual, variaveis)){
             return false;
